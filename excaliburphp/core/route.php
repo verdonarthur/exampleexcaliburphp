@@ -98,7 +98,7 @@ class route {
         
         if (file_exists(CONTROLLERPATH . $name_of_controller . '.php')) {
             $is_controller_exist = true;
-            require CONTROLLERPATH . $name_of_controller . '.php';
+            require_once CONTROLLERPATH . $name_of_controller . '.php';
         }
         
         return $is_controller_exist;
@@ -172,9 +172,10 @@ class route {
      */
     private static function make_route($url = '') {
         $routes_conf = excalibur::load_routes_conf();
-        $command = self::get_command($url);
         
-        $controller = new $command;
+        $command = self::get_command($url);
+        if(!isset($controller))
+            $controller = new $command;
         
         if (self::is_param_in_route($url)) {
             $param = self::get_param_route($url);
