@@ -22,7 +22,7 @@ class model_connection {
     {
         $can_connect = false;
         
-        if(model_users::is_user_login_exist($password_user)){
+        if(model_users::is_user_login_exist($login_user)){
             if(model_users::is_password_correct($login_user, $password_user)){
                 $can_connect = true;
             }
