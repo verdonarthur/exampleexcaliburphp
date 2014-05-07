@@ -18,7 +18,6 @@ abstract class orm {
     protected static $properties;
 
     public function __construct() {
-        
     }
     /**
      * return all record of the table
